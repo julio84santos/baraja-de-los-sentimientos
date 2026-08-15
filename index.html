@@ -7,6 +7,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1163616553512331');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1163616553512331&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -273,7 +290,7 @@
 
           <p class="plan-price"><span class="plan-price-old">9,90€</span><span>Solo</span>4,90€</p>
           <p class="plan-note">Pago único · Acceso inmediato</p>
-          <a id="offer-basic" class="btn btn-primary btn-block" href="https://pay.hotmart.com/H107141382J" target="_blank" rel="noopener">🎴 ¡Quiero la baraja!</a>
+          <a id="offer-basic" class="btn btn-primary btn-block" href="https://pay.hotmart.com/H107141382J" target="_blank" rel="noopener" data-track-checkout="" data-plan="Baraja" data-value="4.90">🎴 ¡Quiero la baraja!</a>
           <p class="plan-secure">🔒 Pago seguro</p>
         </div>
 
@@ -417,6 +434,21 @@
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && !modal.hidden) closeModal();
+  });
+})();
+</script>
+
+<script>
+(function () {
+  if (typeof fbq === 'undefined') return;
+  document.querySelectorAll('[data-track-checkout]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      fbq('track', 'InitiateCheckout', {
+        content_name: el.getAttribute('data-plan') || '',
+        value: parseFloat(el.getAttribute('data-value')) || 0,
+        currency: 'EUR'
+      });
+    });
   });
 })();
 </script>
