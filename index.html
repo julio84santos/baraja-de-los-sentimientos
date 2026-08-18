@@ -427,7 +427,9 @@ src="https://www.facebook.com/tr?id=1163616553512331&ev=PageView&noscript=1"
     document.body.style.overflow = '';
   }
 
-  trigger.addEventListener('click', openModal);
+  // TESTE A/B: upsell desativado — clique vai direto para o checkout.
+  // Para reativar o modal, descomente a linha abaixo.
+  // trigger.addEventListener('click', openModal);
   closeBtn.addEventListener('click', closeModal);
   modal.addEventListener('click', function (e) {
     if (e.target === modal) closeModal();
